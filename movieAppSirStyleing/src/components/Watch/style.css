@@ -1,0 +1,28 @@
+body{
+    background-color: #141414;
+    color:#fff;
+
+}
+.singleHeading{
+    background-color: #1e272d;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.singleHeading h1{
+    text-transform: uppercase;
+    font-style: 30px;
+
+}
+.singleHeading span{
+    word-spacing: 5px;
+    margin-left: 10px;
+
+}
+.singleHeading .container{
+    max-width: 80%;
+    margin: auto;
+}

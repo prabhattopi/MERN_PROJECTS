@@ -1,0 +1,28 @@
+@import "../../CommonFolder/colors.scss";
+
+.header {
+    background-color: $secondary-color;
+    height: 72px;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+
+}
+.logo{
+    color:$font-primary;
+    font-size:20px;
+    font-weight: 600;
+
+}
+.user-image,.user-image img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
