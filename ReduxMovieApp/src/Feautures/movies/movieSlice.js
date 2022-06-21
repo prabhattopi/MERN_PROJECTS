@@ -2,8 +2,8 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import MovieApi from "../../CommonFolder/api/movieApi"
 import {APIKey} from "../../CommonFolder/api/MovieApikey"
-let movieText="harry"
-export const fetchAsyncMovies=createAsyncThunk("movies/fetchAsyncMovies",async ()=>{
+export const movieText="harry"
+export const fetchAsyncMovies=createAsyncThunk("movies/fetchAsyncMovies",async (movieText)=>{
    
 
         const r=await MovieApi.get(`?apiKey=${APIKey}&s=${movieText}&type=movie`)
@@ -13,8 +13,8 @@ export const fetchAsyncMovies=createAsyncThunk("movies/fetchAsyncMovies",async (
       
 
 })
-let showText="Friends"
-export const fetchAsyncShows=createAsyncThunk("movies/fetchAsyncShows",async ()=>{
+export const showText="Friends"
+export const fetchAsyncShows=createAsyncThunk("movies/fetchAsyncShows",async (showText)=>{
    
 
         const r=await MovieApi.get(`?apiKey=${APIKey}&s=${showText}&type=series`)
@@ -38,6 +38,7 @@ const initialState={
     movies:{},
     shows:{},
     selectedMovieorShows:{},
+    loader:false,
  
  
 
@@ -52,33 +53,38 @@ const movieSlice=createSlice({
         addMovies:(state,{payload})=>{
             state.movies=payload
         },
-        onchan:(state,{payload})=>{
+        // onchan:(state,{payload})=>{
    
            
-            movieText=payload
+        //     movieText=payload
 
-        },
-        onchanShow:(state,{payload})=>{
+        // },
+        // onchanShow:(state,{payload})=>{
    
            
-            showText=payload
+        //     showText=payload
 
-        },
+        // },
         removeSelectedMovieOrShow:(state)=>{
             state.selectedMovieorShows={}
         }
     },
     extraReducers:{
-        [fetchAsyncMovies.pending]:()=>{
-            console.log("Pending")
+        [fetchAsyncMovies.pending]:(state)=>{
+            return{...state,loader:true}
+            // console.log("Pending")
         },
         [fetchAsyncMovies.fulfilled]:(state,{payload})=>{
             console.log("fullfilled")
-            return {...state,movies:payload}
+            return {...state,movies:payload,loader:false}
         },
         [fetchAsyncMovies.rejected]:()=>{
             console.log("rejected")
             
+        },
+        [fetchAsyncShows.pending]:(state)=>{
+            return{...state,loader:true}
+            // console.log("Pending")
         },
         [fetchAsyncShows.fulfilled]:(state,{payload})=>{
             console.log("fullfilled")
@@ -96,6 +102,7 @@ export const {removeSelectedMovieOrShow}=movieSlice.actions
 export const {onchan}=movieSlice.actions
 export const {onchanShow}=movieSlice.actions
 export const getAllMovies=(state)=>state.movies.movies
+export const getAllLoader=(state)=>state.movies.loader
 export const getAllShows=(state)=>state.movies.shows
 export const getSelectedMovieOrShow=(state)=>state.movies.selectedMovieorShows
 

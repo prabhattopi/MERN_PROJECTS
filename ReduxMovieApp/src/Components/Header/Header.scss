@@ -26,3 +26,43 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+.search-bar{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    
+
+    form{
+        display: flex;
+        justify-content: center;
+        width: 70%;
+  
+        button{
+            
+            padding: 0px 8px;
+            font-size: 20px;
+            cursor: pointer;
+            height: 39px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+}
+    }
+    input{
+        padding: 5px 5px 5px 10px;
+        border-radius: 10px;
+        font-size: 18px;
+        width: 100%;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        height: 39px;
+        font-weight: 500;
+        outline: none;
+        
+}
+
+}
