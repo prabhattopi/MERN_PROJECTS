@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import { CartBtn } from "./button/CartBtn";
 import {Login} from "./button/Login"
 import { Signup } from "./button/Signup";
 export const Header = () => {
@@ -43,10 +44,12 @@ export const Header = () => {
             </li>
             </ul>
           
-         </div>
+        
          <Link className="navbar-brand mx-auto fw-bold" to="/">Mobile Tobile</Link>
          <Login/>
          <Signup/>
+         <CartBtn/>
+         </div>
          </div>
       
 
