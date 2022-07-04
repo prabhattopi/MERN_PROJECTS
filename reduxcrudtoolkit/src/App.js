@@ -3,6 +3,8 @@ import './App.css';
 import { UserList } from './featues/Users/UserList';
 import {Routes,Route} from "react-router-dom"
 import { Adduser } from './featues/Users/Adduser';
+import { EditUsers } from './featues/Users/EditUsers';
+
 function App() {
   return (
    
@@ -11,6 +13,9 @@ function App() {
       <Routes>
         <Route path="" element={<UserList/>}/>
         <Route path="/add-user" element={<Adduser/>}/>
+        <Route path="/edit-user/:id" element={<EditUsers/>}/>
+       
+
       </Routes>
 
      </div>

@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
-
+import { useSelector } from "react-redux/es/exports";
+import { deleteUser } from "./UserSlice";
+import {useDispatch} from 'react-redux'
 export const UserList = () => {
-  const users = [
-    { id: "1", name: "Amanda", email: "amanda@gmail.com" },
-    { id: "2", name: "John", email: "amanda@gmail.com" },
-    { id: "3", name: "Ullu", email: "amanda@gmail.com" },
-  ];
+  const users=useSelector(store=>store.users)
+  const dispatch=useDispatch()
+  // 
+  const HandleDel=(id)=>{
+    dispatch(deleteUser({id:id}))
+
+  }
   const renderCard = () =>
     users.map((e) => (
       <div key={e.id} className="bg-gray-300 p-5 flex items-center justify-between">
@@ -16,7 +20,7 @@ export const UserList = () => {
           <span className="font-normal text-gray-600">{e.email}</span>
         </div>
         <div className="flex gap-3">
-          <Link>
+          <Link to={`edit-user/${e.id}`}>
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +41,8 @@ export const UserList = () => {
           </Link>
           
 
-          <Link>
-          <button>
+       
+          <button onClick={()=>HandleDel(e.id)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -54,7 +58,7 @@ export const UserList = () => {
               />
             </svg>
           </button>
-          </Link>
+     
          
         </div>
       </div>
