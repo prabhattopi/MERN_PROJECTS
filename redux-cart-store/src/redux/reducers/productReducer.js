@@ -1,4 +1,4 @@
-import { Action } from "history"
+
 import { ActionTypes } from "../constants/actiontypes"
 
 const initialstate={
@@ -7,7 +7,7 @@ const initialstate={
 
 export const productReducer=(state=initialstate,{type,payload})=>{
   switch(type){
-    case ActionTypes.SET_PRODUCTS:return{
+case ActionTypes.FETCH_PRODUCTS:return{
        ...state,
        products:payload
     }
@@ -22,6 +22,8 @@ export const selectedProductReducer=(state={},{type,payload})=>{
       
     }
     case ActionTypes.REMOVE_SELECTED_PRODUCT:return {}
+
+
     default:return state
   }
   

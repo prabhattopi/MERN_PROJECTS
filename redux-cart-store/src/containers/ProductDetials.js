@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch,useSelector } from 'react-redux'
-import { removeSelectedProdcut, selectedProduct } from '../redux/actions/action'
+import { fetchSelectedProducts, removeSelectedProdcut, selectedProduct } from '../redux/actions/action'
 export const ProductDetials = () => {
   const product=useSelector(state=>state.oneprod)
 const dispatch=useDispatch()
+const {productId}=useParams()
 
-  const {productId}=useParams()
-  const getData=async()=>{
-    try{
-      const r=await axios.get(`https://fakestoreapi.com/products/${productId}`)
- 
-   dispatch(selectedProduct(r.data))
-   
-    }
-    catch(err){
-
-    }
-
-  
-  }
-  console.log(product)
-  useEffect(()=>{
+useEffect(()=>{
     if(productId&&productId!=""){
-      getData()
+      dispatch(fetchSelectedProducts(productId))
     }
     return ()=>dispatch(removeSelectedProdcut())
   
@@ -32,7 +18,30 @@ const dispatch=useDispatch()
   },[productId])
   return (
     <div>
-
+     {
+    Object.keys(product).length===0
+    ?<div style={{fontSize:"40px",marginTop:"40px"}}>...loading</div>
+    :<div>
+      <div>
+        <img width="200px" src={product.image} alt="" />
+      
+      </div>
+      <div>
+        <p>
+          {product.description}
+        </p>
+      </div>
+      <div>
+        <h1>
+          ${product.price}
+        </h1>
+      </div>
+      <div>
+      {product.category}
+      </div>
+      <Link to="/">Go Back</Link>
+      </div>
+     }
     </div>
   )
 }
