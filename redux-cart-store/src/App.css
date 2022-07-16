@@ -1,0 +1,10 @@
+.prabhat{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 20px 30px;
+    
+}
+.prov{
+    height: 200px;
+}
