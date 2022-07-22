@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
+
 import './App.css';
+import {Container,Row,Col} from "react-bootstrap"
+import {Note} from "./models/note.mode"
+
+import Navbar from 'react-bootstrap/Navbar';
+import Header from './components/Header';
+import NotesList from './components/NotesList';
+import CreateNotes from './components/CreateNotes';
+
+// let notes=JSON.parse(localStorage.getItem("prab"))
 
 function App() {
+  //TypeScript Identify fataksay TODO(😎😎😎😎😎😎)
+  //typescript makes discipline in our code
+  //benefit its identify errors early
+  // const name:string=10(😖😖😖😖)
+  // const name:string="Prabaht"
+
+  const [notes,setNotes]=useState<Note[]
+  >([{
+    id:(new Date()).toString(),
+    title:"Mettings",
+    text:"Schedule metting with UI/UX Team",
+    color:"#dfdfdf",
+    date:(new Date()).toString()
+
+  }])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+     <Header/>
+     <Container className="mt-5">
+      <Row>
+        <Col>
+        <NotesList notes={notes} setNotes={setNotes}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <CreateNotes notes={notes} setNotes={setNotes}/>
+        </Col>
+      </Row>
+     </Container>
+    </>
   );
 }
+
+
+
 
 export default App;
