@@ -8,7 +8,7 @@ export const AddTransaction = () => {
     const HandleSumit=(e)=>{
         e.preventDefault()
         const newTrans={
-            id:Math.floor(Math.random() * 10000000000000000000000000000000000000),
+            
             text:text,
             amount:Number(amount)
         }
