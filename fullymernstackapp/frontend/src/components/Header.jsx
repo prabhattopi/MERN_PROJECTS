@@ -12,7 +12,7 @@ const Header = () => {
     const onLogotu=()=>{
         dispatch(logout())
         dispatch(reset())
-        navigate("/login")
+        navigate("/")
 
     }
   return (

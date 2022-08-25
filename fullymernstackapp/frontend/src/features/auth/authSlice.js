@@ -1,5 +1,5 @@
 import {createSlice,createAsyncThunk} from "@reduxjs/toolkit"
-import { set } from "mongoose"
+
 import authService from "./authserver"
 
 //Get user from localStorage
@@ -87,6 +87,7 @@ export const authSlice=createSlice({
         .addCase(logout.fulfilled,(state)=>{
             state.user=null
         })
+    
         
 
     }
