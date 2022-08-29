@@ -1,1 +1,0 @@
-netlify link:{`https://dataappprbhat.netlify.app/`}
