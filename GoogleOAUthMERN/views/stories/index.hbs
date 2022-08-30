@@ -1,0 +1,32 @@
+<h1>Stories</h1>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{!-- parse handlebars we need triple bracess --}}
+                {{{editIcon user ../user _id}}}
+
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                {{!-- for both we use pranthesis --}}
+                <p>{{stripTags (truncate body 150)}}</p>
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/stories/user/{{user._id}}">{{truncate user.displayName 10}}</a>
+                </div>
+
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    {{else}}
+    <p>NO Stories to display</p>
+
+    {{/each}}
+</div>
