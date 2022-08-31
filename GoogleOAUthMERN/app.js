@@ -8,6 +8,7 @@ const passport=require("passport")
 const session=require("express-session");
 const mongoose = require("mongoose");
 const MongoStore=require("connect-mongo")
+const methodOverride=require("method-override")
 //Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -20,9 +21,28 @@ connectDB()
 
 //Logging
 const app=express()
+app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 
-app.use(express.urlencoded({extended:false}))
+//method-middleware
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    let method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
+
+
+
+
+
+
+
+
+
+
 
 
 if(process.env.NODE_ENV==="development"){
@@ -31,7 +51,7 @@ if(process.env.NODE_ENV==="development"){
 
 //HandleBars Helper
 
-const {formatDate,stripTags,truncate,editIcon}=require("./helper/hbs")
+const {formatDate,stripTags,truncate,editIcon,select}=require("./helper/hbs")
 
 
 //HandleBars
@@ -39,7 +59,8 @@ app.engine('.hbs', engine({helpers:{
   formatDate,
   stripTags,
    truncate,
-   editIcon
+   editIcon,
+select
 }, defaultLayout:'main',extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', './views');
@@ -63,6 +84,9 @@ app.use(session({
 //passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+
+
 
 //Global Variable
 app.use(function(req,res,next){
