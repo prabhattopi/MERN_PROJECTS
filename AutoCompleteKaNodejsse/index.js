@@ -1,10 +1,12 @@
 const express=require("express")
 const dotenv=require("dotenv")
 const mongoose=require("mongoose")
-
+const cors=require("cors")
 dotenv.config()
 const app=express()
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}));
 mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -23,7 +25,7 @@ const schema=new mongoose.Schema({
 })
 const Movie=mongoose.model("movie",schema)
 
-app.get("/search",async(req,res)=>{
+app.get("/search",cors(),async(req,res)=>{
     try{
 
     const {title}=req.query
