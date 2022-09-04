@@ -4,7 +4,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import morgan from "morgan"
-
+import routes from "./routes/index"
 
 
 //Middleware
@@ -14,6 +14,10 @@ app.use(express.urlencoded({extended:false}))
 app.use(cors())
 app.use(morgan("dev"))
 app.use(cookieParser())
+
+//Routes
+app.use("/api",routes.authRouter)
+
 
 
 //Database

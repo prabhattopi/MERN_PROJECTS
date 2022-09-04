@@ -8,10 +8,16 @@ Clockify is used by everyone from freelancers, small businesses, and consulting 
 ## Technologies we used
 <!-- <hr> -->
 - React
-- Redux
 - Chakra/UI
 - MongoDB
 - Express
+-Nodejs
+-Redux-toolkit
+-React-bootstrap
+- react-redux
+-JWT
+
+
 
 
 ## Installing and Running
