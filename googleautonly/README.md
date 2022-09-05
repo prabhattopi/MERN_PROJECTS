@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Hello Eveyone This is Full Stack-Story book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here you can google-auth CRUD story and also read other public story So go chekcout my Story book
 
 ## Available Scripts
 
