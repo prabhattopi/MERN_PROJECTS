@@ -1,5 +1,6 @@
 import React from 'react'
 import {Row,Col} from "react-bootstrap"
+import ProductsCart from '../components/ProductsCart'
 import { productArray } from '../productStore'
 
 const Store = () => {
@@ -10,7 +11,7 @@ const Store = () => {
         {
         productArray?.map((e)=>(
             <Col align="center" key={e.id}>
-            <h1>{e.title}</h1>
+           <ProductsCart product={e}/>
         </Col>
         ))
         }
