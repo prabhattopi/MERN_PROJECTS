@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Container maxWidth="sm">
-        <Box text Align="center" mt={5}>
+        <Box textAlign="center" mt={5}>
           <Routes>
             <Route path="" element={<Settings />} />
 

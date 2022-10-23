@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-axios.defaults.baseURL="https://opentdb.com/"
+axios.defaults.baseURL="https://opentdb.com"
 const useAxios = ({ url }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
 
   const [loading,setLoading] = useState(true);
-  useEffect =
-    (() => {
+  useEffect(() => {
       const fetchData = () => {
         axios.get(url)
         .then(res=>setResponse(res.data))

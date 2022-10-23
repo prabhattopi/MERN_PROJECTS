@@ -1,8 +1,13 @@
 
 import {Box,FormControl,TextField} from "@mui/material"
+import { useDispatch } from "react-redux"
+import { handleAmountChange } from "../redux/action"
 
 const TextFields = () => {
-    const handleChange=()=>{
+  const dispatch=useDispatch()
+    const handleChange=(e)=>{
+      dispatch(handleAmountChange(e.target.value))
+
 
     }
   return (
