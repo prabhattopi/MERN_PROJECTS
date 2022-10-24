@@ -7,11 +7,7 @@ import useAxios from "../hooks/useAxios";
 
 const Settings = () => {
     const navigate=useNavigate()
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        navigate("/questions")
-
-    }
+ 
     const {response,error,loading}=useAxios({url:"/api_category.php"})
     if(loading){
         return (
@@ -39,6 +35,13 @@ const Settings = () => {
         {id:"boolean",name:"True/False"},
      
     ]
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+    
+        navigate("/questions")
+
+    }
   return (
     <>
         <Typography variant="h2" fontWeight="bold">Quiz App</Typography>

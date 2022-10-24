@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { handleAmountChange, handleScoreChange } from "../redux/action"
+import { handleAmountChange, handleReset, handleScoreChange } from "../redux/action"
 
 
 const FinalScore = () => {
@@ -9,8 +9,7 @@ const FinalScore = () => {
   const dispatch=useDispatch()
 
   const handleClickBack=()=>{
-  dispatch(handleScoreChange(0))
-  dispatch(handleAmountChange(50))
+ dispatch(handleReset())
   navigate("/")
   }
   const {score}=useSelector(state=>state)

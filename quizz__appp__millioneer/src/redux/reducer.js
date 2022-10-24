@@ -4,6 +4,7 @@ import {
   CHANGE_DIFFICULTY,
   CHANGE_SCORE,
   CHANGE_TYPE,
+  RESET_VALUE,
 } from "./actionType";
 
 const initialState = {
@@ -46,6 +47,15 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         score: payload,
       };
+    }
+    case RESET_VALUE:{
+      return {
+        question_category: "",
+        question_difficulty: "",
+        question_type: "",
+        amount_of_question: 50,
+        score: 0,
+      }
     }
 
     default:

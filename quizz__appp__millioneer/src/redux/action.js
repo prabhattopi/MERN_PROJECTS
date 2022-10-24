@@ -1,4 +1,4 @@
-import { CHANGE_AMOUNT, CHANGE_CATEGORY, CHANGE_DIFFICULTY, CHANGE_SCORE, CHANGE_TYPE } from "./actionType";
+import { CHANGE_AMOUNT, CHANGE_CATEGORY, CHANGE_DIFFICULTY, CHANGE_SCORE, CHANGE_TYPE, RESET_VALUE } from "./actionType";
 
 
 export const handleCategoryChange=payload=>({
@@ -25,4 +25,8 @@ export const handleAmountChange=payload=>({
     type:CHANGE_AMOUNT,
     payload,
 
+})
+
+export const handleReset=()=>({
+    type:RESET_VALUE
 })

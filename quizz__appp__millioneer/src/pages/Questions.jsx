@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, TextField, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,10 +32,10 @@ const Questions = () => {
   if (question_type) {
     apiUrl = apiUrl.concat(`&type=${question_type}`);
   }
-  const { response, loading } = useAxios({ url: apiUrl });
+  const { response,error, loading } = useAxios({ url: apiUrl });
   const [questionIndex, setQuestionIndex] = useState(0);
   const [options, setOptions] = useState([]);
-  console.log(options);
+  // console.log(options);
   useEffect(() => {
     if (response?.results.length) {
       const question = response.results[questionIndex];
@@ -56,6 +56,8 @@ const Questions = () => {
       </Box>
     );
   }
+  
+  
   const handleClickAnswer = (e) => {
     const question = response.results[questionIndex];
     if(e.target.textContent===question.correct_answer){
@@ -75,8 +77,8 @@ const Questions = () => {
     <Box>
       <Typography variant="h4">Questions {questionIndex + 1}</Typography>
       <Typography mt={5}>
-        {" "}
-        {decode(response.results[questionIndex].question)}
+    
+        {decode(response?.results[questionIndex].question)}
       </Typography>
 
       {options?.map((data, id) => (
