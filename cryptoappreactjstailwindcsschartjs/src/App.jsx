@@ -11,10 +11,10 @@ function App() {
     <div className="App">
     <Navbar/>
       <Routes>
-        <Route path="/" element={<CryptoHome/>}>
+        <Route path="/" element={<CryptoHome/>}/>
           <Route path="/coin/:id" element={<CryptoDetails/>}/>
 
-        </Route>
+  
       </Routes>
      
     </div>
